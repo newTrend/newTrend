@@ -64,7 +64,7 @@ public class MainActivity extends ActionBarActivity {
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
                                         editor.putString("user",phoneNumber);
                                         editor.commit();
-                                        Intent intent =new Intent(MainActivity.this,Rsvp.class);
+                                        Intent intent =new Intent(MainActivity.this,MenuActivity.class);
                                         startActivity(intent);
 
                                     }

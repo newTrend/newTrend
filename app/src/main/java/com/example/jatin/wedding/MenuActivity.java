@@ -1,0 +1,150 @@
+package com.example.jatin.wedding;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+
+public class MenuActivity extends ActionBarActivity {
+    mainHappening adapterObj;
+    ListView l;
+    String TAG="check";
+    ArrayList listName=new ArrayList();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+        if(savedInstanceState==null) {
+            String tag_json_obj = "json_obj_req";
+            String url = "http://10.10.20.169:82/newTrend/menu.json";
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
+                    url, null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            l = (ListView) findViewById(R.id.listView);
+                            try {
+                                JSONArray dataSet = (JSONArray) response.get("data");
+                                if (dataSet != null) {
+                                    int len = dataSet.length();
+                                    for (int i = 0; i < len; i++) {
+                                        JSONObject json = dataSet.getJSONObject(i);
+                                        listName.add(json.get("name"));
+
+                                    }
+                                }
+                                adapterObj = new mainHappening(getApplicationContext(), listName);
+                                l.setAdapter(adapterObj);
+//                                l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                                    @Override
+//                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                                    }
+//                                });
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d(TAG, "Error: " + error);
+                }
+            });
+            AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+        }
+        else{
+            l= (ListView) findViewById(R.id.listView);
+            adapterObj= (mainHappening) savedInstanceState.getParcelable("myData");
+            l.setAdapter(adapterObj);
+        }
+
+
+
+    }
+
+}
+
+class MyViewHolder{
+        TextView nameText;
+        MyViewHolder(View row){
+            nameText = (TextView) row.findViewById(R.id.nameText);
+        }
+}
+    class mainHappening extends ArrayAdapter implements Parcelable {
+        protected static final String TAG = "ERROR";
+        Context context;
+        String[] nameList;
+        TextView loading;
+        public mainHappening(Context c, ArrayList names) {
+            super(c,R.layout.single_row,R.id.textView,names);
+            this.context=c;
+            this.nameList= (String[]) names.toArray(new String[names.size()]);
+        }
+        public View getView(int position,View convertView,ViewGroup parent){
+            View row=convertView;
+            final MyViewHolder holder;
+            if(row==null) {
+                //only run if row is created for first time
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                row = inflater.inflate(R.layout.single_row, parent, false);
+                holder =new MyViewHolder(row);
+                row.setTag(holder);
+            }
+            else{
+                holder= (MyViewHolder) row.getTag();
+            }
+//        TextView nameText = (TextView) row.findViewById(R.id.nameText);
+
+            if(!(nameList[position].isEmpty()))
+                holder.nameText.setText(nameList[position]);
+            else
+                holder.nameText.setText("Nothing to show");
+
+
+            //image setting finished
+            return row;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+
+        }
+    }
+
+
