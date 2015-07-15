@@ -96,55 +96,53 @@ public class MenuActivity extends ActionBarActivity {
 }
 
 class MyViewHolder{
-        TextView nameText;
-        MyViewHolder(View row){
-            nameText = (TextView) row.findViewById(R.id.nameText);
-        }
+    TextView nameText;
+    MyViewHolder(View row){
+        nameText = (TextView) row.findViewById(R.id.nameText);
+    }
 }
-    class mainHappening extends ArrayAdapter implements Parcelable {
-        protected static final String TAG = "ERROR";
-        Context context;
-        String[] nameList;
-        TextView loading;
-        public mainHappening(Context c, ArrayList names) {
-            super(c,R.layout.single_row,R.id.textView,names);
-            this.context=c;
-            this.nameList= (String[]) names.toArray(new String[names.size()]);
+class mainHappening extends ArrayAdapter implements Parcelable {
+    protected static final String TAG = "ERROR";
+    Context context;
+    String[] nameList;
+    TextView loading;
+    public mainHappening(Context c, ArrayList names) {
+        super(c,R.layout.single_row,R.id.textView,names);
+        this.context=c;
+        this.nameList= (String[]) names.toArray(new String[names.size()]);
+    }
+    public View getView(int position,View convertView,ViewGroup parent){
+        View row=convertView;
+        final MyViewHolder holder;
+        if(row==null) {
+            //only run if row is created for first time
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            row = inflater.inflate(R.layout.single_row, parent, false);
+            holder =new MyViewHolder(row);
+            row.setTag(holder);
         }
-        public View getView(int position,View convertView,ViewGroup parent){
-            View row=convertView;
-            final MyViewHolder holder;
-            if(row==null) {
-                //only run if row is created for first time
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                row = inflater.inflate(R.layout.single_row, parent, false);
-                holder =new MyViewHolder(row);
-                row.setTag(holder);
-            }
-            else{
-                holder= (MyViewHolder) row.getTag();
-            }
+        else{
+            holder= (MyViewHolder) row.getTag();
+        }
 //        TextView nameText = (TextView) row.findViewById(R.id.nameText);
 
-            if(!(nameList[position].isEmpty()))
-                holder.nameText.setText(nameList[position]);
-            else
-                holder.nameText.setText("Nothing to show");
+        if(!(nameList[position].isEmpty()))
+            holder.nameText.setText(nameList[position]);
+        else
+            holder.nameText.setText("Nothing to show");
 
 
-            //image setting finished
-            return row;
-        }
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-
-        }
+        //image setting finished
+        return row;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
+}

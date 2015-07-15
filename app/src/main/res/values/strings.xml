@@ -7,6 +7,7 @@
     <string name="title_activity_page1">Page1</string>
     <string name="title_activity_rsvp">Rsvp</string>
     <string name="title_activity_menu">Menu</string>
+    <string name="rsvp">Inform marriage planner about the number of person you are coming with...</string>
 
 
 </resources>

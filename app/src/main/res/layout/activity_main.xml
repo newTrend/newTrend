@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8C1310"
+    android:background="@color/primaryColor"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.jatin.myapplication.Planner">
+    tools:context="com.example.jatin.wedding.MainActivity">
 
     <TextView
         android:id="@+id/textview1"
@@ -22,7 +22,7 @@
         android:textSize="35dp" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:layout_centerInParent="true">
@@ -55,8 +55,7 @@
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
-            android:layout_toStartOf="@+id/textview1"
-            android:background="#400907"
+            android:background="@color/accentColor"
             android:padding="15dp"
             android:text="login" />
 

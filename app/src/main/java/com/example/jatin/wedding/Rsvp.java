@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,10 +34,17 @@ public class Rsvp extends ActionBarActivity {
     Spinner spinner;
     Button btn;
     String TAG="check";
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rsvp);
+
+        toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         spinner = (Spinner) findViewById(R.id.spinner);
         final ProgressDialog pDialog = new ProgressDialog(this);
         SharedPreferences preferences= getSharedPreferences("Phone", MODE_PRIVATE);
