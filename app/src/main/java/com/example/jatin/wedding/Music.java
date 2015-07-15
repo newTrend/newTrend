@@ -3,6 +3,7 @@ package com.example.jatin.wedding;
 import android.app.ProgressDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,10 +27,17 @@ public class Music extends ActionBarActivity {
     Button btn;
     String Log="check";
     String songName,artistName,notes;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
+
+        toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         songname = (TextView) findViewById(R.id.songname);
         artistname = (TextView) findViewById(R.id.artistname);
         note= (TextView) findViewById(R.id.note);

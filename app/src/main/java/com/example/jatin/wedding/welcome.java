@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 public class welcome extends ActionBarActivity implements AdapterView.OnItemClickListener {
     private DrawerLayout drawerLayout;
     private ListView listView;
+    Toolbar toolbar;
     // private String[] options;
     private ActionBarDrawerToggle drawerListener;
     private MyAdapter myAdapter;
@@ -31,9 +33,12 @@ public class welcome extends ActionBarActivity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+
         drawerLayout= (DrawerLayout) findViewById(R.id.drawerLayout);
         myAdapter=new MyAdapter(this);
-        drawerListener=new ActionBarDrawerToggle(this,drawerLayout,R.string.open_drawer,R.string.close_drawer){
+        drawerListener=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open_drawer,R.string.close_drawer){
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -49,7 +54,7 @@ public class welcome extends ActionBarActivity implements AdapterView.OnItemClic
         };
         drawerLayout.setDrawerListener(drawerListener);
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listView= (ListView) findViewById(R.id.drawerList);
         listView.setAdapter(myAdapter);
         listView.setOnItemClickListener(this);
@@ -69,7 +74,7 @@ public class welcome extends ActionBarActivity implements AdapterView.OnItemClic
                 intent=new Intent(welcome.this,Rsvp.class);
                 break;
             case "Menu" :
-                intent=new Intent(welcome.this,Menu.class);
+                intent=new Intent(welcome.this,MenuActivity.class);
                 break;
             case "Music" :
                 intent=new Intent(welcome.this,Music.class);
@@ -112,7 +117,7 @@ public class welcome extends ActionBarActivity implements AdapterView.OnItemClic
 class MyAdapter extends BaseAdapter {
     private Context context;
     String[] options;
-    int[] images={R.drawable.pref,R.drawable.banner,R.drawable.account,R.drawable.about,R.drawable.banner};
+    int[] images={R.drawable.rsvp,R.drawable.food,R.drawable.music,R.drawable.images,R.drawable.about};
 
     public MyAdapter(Context context){
         this.context=context;

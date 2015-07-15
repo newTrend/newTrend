@@ -42,8 +42,11 @@ public class Rsvp extends ActionBarActivity {
 
         toolbar= (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setHomeButtonEnabled(true);
 
         spinner = (Spinner) findViewById(R.id.spinner);
         final ProgressDialog pDialog = new ProgressDialog(this);

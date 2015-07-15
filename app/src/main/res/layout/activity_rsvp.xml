@@ -24,7 +24,7 @@
         android:textColor="@color/black"
         android:padding="20dp"
         android:textSize="20dp"
-        android:text="rsvp" />
+        android:text="@string/rsvp" />
 
 <RelativeLayout
     android:id="@+id/lay1"

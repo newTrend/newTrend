@@ -48,6 +48,7 @@ public class MenuActivity extends ActionBarActivity {
         toolbar= (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if(savedInstanceState==null) {
             String tag_json_obj = "json_obj_req";
