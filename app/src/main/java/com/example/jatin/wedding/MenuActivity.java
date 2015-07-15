@@ -8,6 +8,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,11 +38,17 @@ public class MenuActivity extends ActionBarActivity {
     mainHappening adapterObj;
     ListView l;
     String TAG="check";
+    Toolbar toolbar;
     ArrayList listName=new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        toolbar= (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         if(savedInstanceState==null) {
             String tag_json_obj = "json_obj_req";
             String url = "http://10.10.20.169:82/newTrend/menu.json";
