@@ -10,7 +10,6 @@
         layout="@layout/app_bar"
         />
 
-
   <RelativeLayout
       android:id="@+id/rel"
       android:layout_width="300dp"

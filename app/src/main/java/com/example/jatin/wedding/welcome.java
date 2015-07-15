@@ -49,7 +49,7 @@ public class welcome extends ActionBarActivity implements AdapterView.OnItemClic
         };
         drawerLayout.setDrawerListener(drawerListener);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listView= (ListView) findViewById(R.id.drawerList);
         listView.setAdapter(myAdapter);
         listView.setOnItemClickListener(this);
