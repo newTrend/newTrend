@@ -109,6 +109,11 @@ public class welcome extends ActionBarActivity implements AdapterView.OnItemClic
             return true;
         }
 
+        if (id == R.id.action_logout){
+            Intent main = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(main);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }
