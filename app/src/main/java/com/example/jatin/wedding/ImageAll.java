@@ -1,5 +1,6 @@
 package com.example.jatin.wedding;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +35,18 @@ public class ImageAll extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        if (item.getItemId() == android.R.id.home) {
+
+            Intent home = new Intent(getApplicationContext(),welcome.class);
+            startActivity(home);
+
+            /*Intent intent = NavUtils.getParentActivityIntent(this);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            NavUtils.navigateUpTo(this, intent);
+            // NavUtils.navigateUpFromSameTask(this);
+            // finish();*/
+            return true;
+        }
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
