@@ -1,17 +1,80 @@
 package com.example.jatin.wedding;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
 
 
 public class Music extends ActionBarActivity {
-
+    TextView songname;
+    TextView artistname;
+    TextView note;
+    Button btn;
+    String Log="check";
+    String songName,artistName,notes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
+        songname = (TextView) findViewById(R.id.songname);
+        artistname = (TextView) findViewById(R.id.artistname);
+        note= (TextView) findViewById(R.id.note);
+        btn= (Button) findViewById(R.id.submit1);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                songName=songname.getText().toString().replace(" ","_");;
+                artistName=artistname.getText().toString().replace(" ","_");;
+                notes=note.getText().toString().replace(" ","_");;
+                // Tag used to cancel the request
+                String tag_json_obj = "json_obj_req";
+
+                String url = "http://10.10.20.169:82/newTrend/songRequest.php?name="+songName+"&artist="+artistName+"&note="+notes;
+//                String url = "http://10.10.20.169:82/newTrend/songRequest.php?name="+songName+"&artist="+artistName+"&note="+notes;
+                Toast.makeText(getApplicationContext(),"1 "+songName+"  "+artistName+"  "+notes,Toast.LENGTH_LONG).show();
+
+                final ProgressDialog pDialog = new ProgressDialog(Music.this);
+                pDialog.setMessage("Loading...");
+                pDialog.show();
+
+                JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
+                        url, null,
+                        new Response.Listener<JSONObject>() {
+
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Toast.makeText(getApplicationContext(),response+"",Toast.LENGTH_LONG).show();
+                                pDialog.hide();
+                            }
+                        }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                       // Log.d(TAG, "Error: " + error.getMessage());
+                        // hide the progress dialog
+                        pDialog.hide();
+                    }
+                });
+
+// Adding request to request queue
+                AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+            }
+        });
+
     }
 
     @Override

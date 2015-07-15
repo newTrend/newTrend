@@ -6,7 +6,31 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.jatin.wedding.Music">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="I love u ji"
+        android:id="@+id/songname"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/songname"
+        android:text="Diljit verra"
+        android:id="@+id/artistname"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Such a wonderful song!!"
+        android:layout_below="@id/artistname"
+        android:id="@+id/note"/>
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/note"
+    android:id="@+id/submit1"
+    android:text="submit"
+    />
 </RelativeLayout>
