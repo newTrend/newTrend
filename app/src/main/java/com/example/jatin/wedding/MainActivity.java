@@ -63,7 +63,6 @@ public class MainActivity extends ActionBarActivity {
                                         SharedPreferences sharedPreferences = getSharedPreferences("Phone", Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
                                         editor.putString("user",phoneNumber);
-                                        editor.putString("state","Login");
                                         editor.commit();
                                         Intent intent =new Intent(MainActivity.this,welcome.class);
                                         startActivity(intent);

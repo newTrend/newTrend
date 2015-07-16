@@ -3,6 +3,7 @@ package com.example.jatin.wedding;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -29,10 +30,12 @@ public class welcome extends ActionBarActivity implements AdapterView.OnItemClic
     private ActionBarDrawerToggle drawerListener;
     private MyAdapter myAdapter;
     Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
         toolbar= (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
@@ -110,6 +113,11 @@ public class welcome extends ActionBarActivity implements AdapterView.OnItemClic
         }
 
         if (id == R.id.action_logout){
+            SharedPreferences sharedpreferences = getSharedPreferences("Phone", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.clear();
+            editor.commit();
+
             Intent main = new Intent(getApplicationContext(),MainActivity.class);
             startActivity(main);
         }
