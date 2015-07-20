@@ -47,6 +47,10 @@
             android:name=".ImageAll"
             android:label="@string/title_activity_image_all" >
         </activity>
+        <activity
+            android:name=".BeforeMenu"
+            android:label="@string/title_activity_before_menu" >
+        </activity>
     </application>
 
 </manifest>

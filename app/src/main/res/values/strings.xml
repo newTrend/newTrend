@@ -31,5 +31,6 @@
         Vaibhav Hans</string>
     <string name="title_activity_splash">Splash</string>
     <string name="title_activity_spinner_item">SpinnerItem</string>
+    <string name="title_activity_before_menu">BeforeMenu</string>
 
 </resources>

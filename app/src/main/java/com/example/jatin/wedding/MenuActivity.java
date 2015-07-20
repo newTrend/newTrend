@@ -118,7 +118,7 @@ public class MenuActivity extends ActionBarActivity {
 
         if (item.getItemId() == android.R.id.home) {
 
-            Intent home = new Intent(getApplicationContext(),welcome.class);
+            Intent home = new Intent(getApplicationContext(),BeforeMenu.class);
             startActivity(home);
 
             /*Intent intent = NavUtils.getParentActivityIntent(this);

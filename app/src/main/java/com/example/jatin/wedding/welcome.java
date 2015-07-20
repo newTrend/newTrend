@@ -1,6 +1,5 @@
 package com.example.jatin.wedding;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -77,7 +76,7 @@ public class welcome extends ActionBarActivity implements AdapterView.OnItemClic
                 intent=new Intent(welcome.this,Rsvp.class);
                 break;
             case "Menu" :
-                intent=new Intent(welcome.this,MenuActivity.class);
+                intent=new Intent(welcome.this,BeforeMenu.class);
                 break;
             case "Music" :
                 intent=new Intent(welcome.this,Music.class);
