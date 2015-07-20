@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context="com.example.jatin.wedding.MenuActivity">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar" />
+
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_veg"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center"
+        android:elevation="30dp"
+        android:layout_below="@id/app_bar"
+        card_view:cardCornerRadius="5dp">
+
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="165dp"
+            android:background="@drawable/vegfood"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Vegetarian"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:layout_marginTop="160dp"
+            />
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_nonveg"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center"
+        android:elevation="30dp"
+        android:layout_below="@id/card_veg"
+        card_view:cardCornerRadius="5dp">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="165dp"
+            android:background="@drawable/nonvegfood"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Non-Vegetarian"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:layout_marginTop="160dp"
+            />
+
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
