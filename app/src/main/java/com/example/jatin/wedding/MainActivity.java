@@ -44,7 +44,9 @@ public class MainActivity extends ActionBarActivity {
                 phoneNumber=phone.getText().toString();
                 // Tag used to cancel the request
                 String tag_json_obj = "json_obj_req";
+
                 String url = "http://10.10.20.169:82/newTrend/login.php?number="+phoneNumber;
+//                String url = "http://192.168.2.19:82/newTrend/login.php?number="+phoneNumber;
                 pDialog.setMessage("Loading...");
                 pDialog.show();
 

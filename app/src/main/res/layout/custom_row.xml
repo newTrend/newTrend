@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/textColor"
         android:text="Medium Text" />
     </LinearLayout>
     <TextView

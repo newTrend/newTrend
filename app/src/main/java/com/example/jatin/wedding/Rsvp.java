@@ -68,6 +68,7 @@ public class Rsvp extends ActionBarActivity {
                 Toast.makeText(getApplicationContext(),"You are coming with "+a+" more.",Toast.LENGTH_LONG).show();
                 String tag_json_obj = "json_obj_req";
                 String url = "http://10.10.20.169:82/newTrend/rsvp.php?rsvp="+a+"&user="+userPhone;
+//                String url = "http://192.168.2.19:82/newTrend/rsvp.php?rsvp="+a+"&user="+userPhone;
                 pDialog.setMessage("Sending the request...");
                 pDialog.show();
                 JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
